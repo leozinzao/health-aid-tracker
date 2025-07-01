@@ -74,24 +74,11 @@ npm run build
 4. **Excluir Medicamento**: Clique no ícone de lixeira para remover o medicamento
 5. **Visualizar Estatísticas**: Veja o resumo na parte superior da tela principal
 
-## 🎯 Público-Alvo
-
-- Pessoas idosas que precisam controlar medicação diária
-- Cuidadores e familiares
-- Qualquer pessoa que necessite de controle medicamentoso
 
 ## 💾 Armazenamento de Dados
 
 Os dados são armazenados localmente no navegador usando `localStorage`, garantindo que as informações persistam entre sessões sem necessidade de conexão com internet.
 
-## 🎨 Design
-
-O aplicativo utiliza um simulador de celular com:
-- Layout fixo similar a um smartphone
-- Interface touch-friendly
-- Botões grandes e acessíveis
-- Cores suaves e contrastantes
-- Tipografia legível
 
 ## 📝 Estrutura do Projeto
 
@@ -110,25 +97,3 @@ src/
 └── lib/                # Utilitários e configurações
 ```
 
-## 🔧 Scripts Disponíveis
-
-- `npm run dev` - Inicia o servidor de desenvolvimento
-- `npm run build` - Gera build de produção
-- `npm run preview` - Visualiza o build de produção
-- `npm run lint` - Executa o linter
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
-
-## 📞 Suporte
-
-Em caso de dúvidas ou problemas, abra uma issue no repositório do projeto.
-
----
-
-**Desenvolvido com ❤️ para facilitar o cuidado com a saúde**
