@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Medicine, MedicineFormData } from '@/types/medicine';
 
 interface MedicineFormProps {
@@ -74,16 +74,10 @@ export const MedicineForm = ({
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle className="text-xl-accessible font-bold text-center text-gray-900">
-          {isEditing ? 'Editar Medicamento' : 'Cadastrar Novo Medicamento'}
-        </CardTitle>
-      </CardHeader>
-      
-      <CardContent>
+    <Card className="w-full">
+      <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <Label htmlFor="name" className="text-lg font-semibold text-gray-700">
               Nome do Medicamento *
             </Label>
@@ -93,14 +87,14 @@ export const MedicineForm = ({
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
               placeholder="Ex: Paracetamol"
-              className={`h-12 text-lg ${errors.name ? 'border-red-500' : ''}`}
+              className={`h-14 text-lg ${errors.name ? 'border-red-500' : ''}`}
             />
             {errors.name && (
               <p className="text-red-600 text-sm font-medium">{errors.name}</p>
             )}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-3">
             <Label htmlFor="dosage" className="text-lg font-semibold text-gray-700">
               Dosagem *
             </Label>
@@ -110,14 +104,14 @@ export const MedicineForm = ({
               value={formData.dosage}
               onChange={(e) => handleInputChange('dosage', e.target.value)}
               placeholder="Ex: 500mg, 1 comprimido, 10ml"
-              className={`h-12 text-lg ${errors.dosage ? 'border-red-500' : ''}`}
+              className={`h-14 text-lg ${errors.dosage ? 'border-red-500' : ''}`}
             />
             {errors.dosage && (
               <p className="text-red-600 text-sm font-medium">{errors.dosage}</p>
             )}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-3">
             <Label htmlFor="time" className="text-lg font-semibold text-gray-700">
               Horário *
             </Label>
@@ -126,17 +120,17 @@ export const MedicineForm = ({
               type="time"
               value={formData.time}
               onChange={(e) => handleInputChange('time', e.target.value)}
-              className={`h-12 text-lg ${errors.time ? 'border-red-500' : ''}`}
+              className={`h-14 text-lg ${errors.time ? 'border-red-500' : ''}`}
             />
             {errors.time && (
               <p className="text-red-600 text-sm font-medium">{errors.time}</p>
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="space-y-3 pt-4">
             <Button
               type="submit"
-              className="flex-1 h-14 text-lg font-bold bg-medicine-info hover:bg-blue-600 text-white"
+              className="w-full h-14 text-lg font-bold bg-medicine-info hover:bg-blue-600 text-white"
             >
               {isEditing ? 'Salvar Alterações' : 'Cadastrar Medicamento'}
             </Button>
@@ -145,7 +139,7 @@ export const MedicineForm = ({
               type="button"
               variant="outline"
               onClick={onCancel}
-              className="flex-1 h-14 text-lg font-semibold border-2 hover:bg-gray-50"
+              className="w-full h-14 text-lg font-semibold border-2 hover:bg-gray-50"
             >
               Cancelar
             </Button>

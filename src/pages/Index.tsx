@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MedicineFormData } from '@/types/medicine';
 import { useToast } from '@/hooks/use-toast';
+import { ArrowLeft, Plus } from 'lucide-react';
 
 type ViewMode = 'list' | 'add' | 'edit';
 
@@ -125,10 +126,10 @@ const Index = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-medicine-info mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600">Carregando medicamentos...</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-medicine-info mx-auto mb-6"></div>
+          <p className="text-xl text-gray-600 font-medium">Carregando medicamentos...</p>
         </div>
       </div>
     );
@@ -136,37 +137,57 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-6 max-w-4xl">
-        
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            💊 Controle de Medicamentos
-          </h1>
-          <p className="text-lg text-gray-600">
-            Mantenha seus medicamentos organizados e nunca se esqueça de tomá-los
-          </p>
+      {/* Header Mobile */}
+      <div className="bg-white shadow-sm sticky top-0 z-10">
+        <div className="px-4 py-4">
+          {viewMode !== 'list' ? (
+            <div className="flex items-center justify-between">
+              <Button
+                variant="ghost"
+                size="lg"
+                onClick={handleCancel}
+                className="p-2"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </Button>
+              <h1 className="text-xl font-bold text-gray-900">
+                {viewMode === 'add' ? 'Novo Medicamento' : 'Editar Medicamento'}
+              </h1>
+              <div className="w-10"></div>
+            </div>
+          ) : (
+            <div className="text-center">
+              <h1 className="text-2xl font-bold text-gray-900 mb-1">
+                💊 Meus Medicamentos
+              </h1>
+              <p className="text-gray-600">
+                Controle seus medicamentos
+              </p>
+            </div>
+          )}
         </div>
+      </div>
 
-        {/* Estatísticas */}
+      <div className="px-4 pb-20">
+        {/* Estatísticas - apenas na lista */}
         {viewMode === 'list' && totalMedicines > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-3 my-6">
             <Card className="bg-white border-2 border-blue-200">
               <CardContent className="p-4 text-center">
                 <div className="text-2xl font-bold text-medicine-info">{totalMedicines}</div>
-                <div className="text-sm text-gray-600 font-medium">Total de Medicamentos</div>
+                <div className="text-xs text-gray-600 font-medium">Total</div>
               </CardContent>
             </Card>
             <Card className="bg-white border-2 border-green-200">
               <CardContent className="p-4 text-center">
                 <div className="text-2xl font-bold text-medicine-success">{takenToday}</div>
-                <div className="text-sm text-gray-600 font-medium">Tomados Hoje</div>
+                <div className="text-xs text-gray-600 font-medium">Tomados</div>
               </CardContent>
             </Card>
             <Card className="bg-white border-2 border-orange-200">
               <CardContent className="p-4 text-center">
                 <div className="text-2xl font-bold text-orange-600">{pendingToday}</div>
-                <div className="text-sm text-gray-600 font-medium">Pendentes</div>
+                <div className="text-xs text-gray-600 font-medium">Pendentes</div>
               </CardContent>
             </Card>
           </div>
@@ -174,38 +195,21 @@ const Index = () => {
 
         {/* Conteúdo Principal */}
         {viewMode === 'list' && (
-          <div className="space-y-6">
-            <div className="flex justify-center">
-              <Button
-                onClick={() => setViewMode('add')}
-                size="lg"
-                className="h-16 px-8 text-xl font-bold bg-medicine-info hover:bg-blue-600 text-white shadow-lg"
-              >
-                ➕ Adicionar Novo Medicamento
-              </Button>
-            </div>
-
+          <div className="space-y-4">
             {medicines.length === 0 ? (
-              <Card className="bg-white border-2 border-dashed border-gray-300">
-                <CardContent className="p-12 text-center">
+              <Card className="bg-white border-2 border-dashed border-gray-300 mt-8">
+                <CardContent className="p-8 text-center">
                   <div className="text-6xl mb-4">💊</div>
-                  <h3 className="text-xl-accessible font-semibold text-gray-700 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-700 mb-2">
                     Nenhum medicamento cadastrado
                   </h3>
-                  <p className="text-lg text-gray-500 mb-6">
-                    Comece adicionando seu primeiro medicamento para manter o controle da sua saúde.
+                  <p className="text-gray-500 mb-6 text-base">
+                    Comece adicionando seu primeiro medicamento.
                   </p>
-                  <Button
-                    onClick={() => setViewMode('add')}
-                    size="lg"
-                    className="h-14 px-8 text-lg font-bold bg-medicine-info hover:bg-blue-600 text-white"
-                  >
-                    Cadastrar Primeiro Medicamento
-                  </Button>
                 </CardContent>
               </Card>
             ) : (
-              <div className="grid gap-6">
+              <div className="space-y-4">
                 {medicines.map((medicine) => (
                   <MedicineCard
                     key={medicine.id}
@@ -221,7 +225,7 @@ const Index = () => {
         )}
 
         {viewMode === 'add' && (
-          <div className="space-y-6">
+          <div className="mt-6">
             <MedicineForm
               onSubmit={handleAddMedicine}
               onCancel={handleCancel}
@@ -230,7 +234,7 @@ const Index = () => {
         )}
 
         {viewMode === 'edit' && editingId && (
-          <div className="space-y-6">
+          <div className="mt-6">
             <MedicineForm
               medicine={getMedicineById(editingId)}
               onSubmit={handleUpdateMedicine}
@@ -239,17 +243,20 @@ const Index = () => {
             />
           </div>
         )}
-
-        {/* Footer */}
-        <div className="text-center mt-12 text-gray-500">
-          <p className="text-sm">
-            Aplicativo desenvolvido para auxiliar no controle de medicamentos
-          </p>
-          <p className="text-xs mt-1">
-            ⚕️ Consulte sempre seu médico sobre medicamentos
-          </p>
-        </div>
       </div>
+
+      {/* Floating Action Button - apenas na tela de lista */}
+      {viewMode === 'list' && (
+        <div className="fixed bottom-6 right-6 z-20">
+          <Button
+            onClick={() => setViewMode('add')}
+            size="lg"
+            className="h-16 w-16 rounded-full bg-medicine-info hover:bg-blue-600 text-white shadow-lg"
+          >
+            <Plus className="w-8 h-8" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
