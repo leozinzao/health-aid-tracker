@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,16 +26,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: 'hsl(200 100% 40%)',
+					foreground: 'hsl(0 0% 100%)'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
+					DEFAULT: 'hsl(0 84.2% 60.2%)',
+					foreground: 'hsl(210 40% 98%)'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
@@ -61,6 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Cores específicas para o app de medicamentos
+				medicine: {
+					success: 'hsl(142 76% 36%)',
+					warning: 'hsl(48 96% 53%)',
+					danger: 'hsl(0 84% 60%)',
+					info: 'hsl(200 100% 40%)'
 				}
 			},
 			borderRadius: {
@@ -84,11 +92,24 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-gentle': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.8'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-gentle': 'pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+			},
+			fontSize: {
+				'xl-accessible': ['2rem', { lineHeight: '2.5rem' }],
+				'lg-accessible': ['1.5rem', { lineHeight: '2rem' }]
 			}
 		}
 	},
