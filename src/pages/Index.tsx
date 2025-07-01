@@ -136,7 +136,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 relative">
       {/* Header Mobile */}
       <div className="bg-white shadow-sm sticky top-0 z-10">
         <div className="px-4 py-4">
@@ -247,7 +247,7 @@ const Index = () => {
 
       {/* Floating Action Button - apenas na tela de lista */}
       {viewMode === 'list' && (
-        <div className="fixed bottom-6 right-6 z-20">
+        <div className="absolute bottom-6 right-6 z-20">
           <Button
             onClick={() => setViewMode('add')}
             size="lg"
