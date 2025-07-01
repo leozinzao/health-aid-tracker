@@ -3,6 +3,10 @@
 
 Um aplicativo mobile para gerenciamento de medicamentos, desenvolvido especialmente para facilitar o controle diário de medicações para pessoas idosas e seus cuidadores.
 
+## 📺 Vídeo de Demonstração
+
+[Assista ao vídeo de demonstração no Google Drive](https://drive.google.com/file/d/1Vj8qvdFulC6OqFPPYuvCN_heiTZoknKz/view?usp=sharing)
+
 ## 📱 Sobre o Projeto
 
 O **Meus Medicamentos** é uma aplicação web responsiva com interface mobile que permite o cadastro, controle e acompanhamento de medicamentos de forma simples e intuitiva. O app foi projetado com foco na usabilidade para pessoas idosas, com botões grandes, interface clara e navegação simplificada.
@@ -25,12 +29,6 @@ O **Meus Medicamentos** é uma aplicação web responsiva com interface mobile q
 - **TypeScript** - Superset JavaScript com tipagem estática
 - **Vite** - Build tool e servidor de desenvolvimento
 - **Tailwind CSS** - Framework de CSS utilitário
-- **Shadcn/UI** - Componentes de UI modernos e acessíveis
-- **React Router DOM** - Roteamento para aplicações React
-- **Lucide React** - Ícones modernos e customizáveis
-- **React Hook Form** - Gerenciamento de formulários
-- **Zod** - Validação de esquemas TypeScript
-- **TanStack Query** - Gerenciamento de estado e cache
 
 ## 🚀 Como Executar
 
@@ -43,7 +41,7 @@ O **Meus Medicamentos** é uma aplicação web responsiva com interface mobile q
 
 1. Clone o repositório:
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone (https://github.com/leozinzao/health-aid-tracker)
 cd meus-medicamentos
 ```
 
