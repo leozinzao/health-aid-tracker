@@ -41,7 +41,7 @@ O **Meus Medicamentos** é uma aplicação web responsiva com interface mobile q
 
 1. Clone o repositório:
 ```bash
-git clone (https://github.com/leozinzao/health-aid-tracker)
+git clone [(https://github.com/leozinzao/App-Controle-de-Medicamentos)]
 cd meus-medicamentos
 ```
 
